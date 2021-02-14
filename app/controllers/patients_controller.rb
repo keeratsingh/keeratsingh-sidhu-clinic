@@ -8,7 +8,7 @@ class PatientsController < ApplicationController
 
   # GET /patients/1 or /patients/1.json
   def show
-    @prescriptions = Prescription.where(patient_id: params[:id])
+    @prescriptions = Patient.find(params[:id]).prescriptions
   end
 
   # GET /patients/new
@@ -18,11 +18,6 @@ class PatientsController < ApplicationController
 
   # GET /patients/1/edit
   def edit
-  end
-
-  # GET /patients/1/new_prescription
-  def new_prescription
-    @prescription = Prescription.new(patient_id: params[:patient_id])
   end
 
   # POST /patients or /patients.json

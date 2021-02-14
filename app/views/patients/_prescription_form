@@ -22,7 +22,6 @@
   </div>
 
   <div class="field">
-    <%# <%= form.label :patient_id %> %>
     <%= form.hidden_field :patient_id %>
   </div>
 

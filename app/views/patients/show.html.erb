@@ -24,13 +24,14 @@
 <%= link_to 'Back', patients_path %>
 
 <p>
-  <strong>Prescriptions: </strong> <%= link_to 'Create New Prescription', patient_new_prescription_path(patient_id:params[:id]) %>
+  <strong>Prescriptions: </strong> <%= link_to 'Create New Prescription', new_patient_prescription_path(patient_id:params[:id]) %>
   <table>
   <thead>
     <tr>
       <th>Name</th>
       <th>Note</th>
       <th>Prescription Date</th>
+      <th colspan="2">Actions</th>
     </tr>
   </thead>
 
@@ -40,7 +41,8 @@
         <td><%= prescription.name %></td>
         <td><%= prescription.note %></td>
         <td><%= prescription.created_at.strftime("%d-%B-%Y") %></td>
-        <td><%= link_to 'Edit', edit_prescription_path(prescription) %></td>
+        <td><%= link_to 'Edit', edit_patient_prescription_path(@patient, prescription) %></td>
+        <td><%= link_to 'Destroy', [@patient, prescription], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

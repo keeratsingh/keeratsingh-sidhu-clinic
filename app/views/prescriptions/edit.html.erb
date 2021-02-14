@@ -1,6 +1,4 @@
 <h1>Editing Prescription</h1>
 
 <%= render 'form', prescription: @prescription %>
-
-<%= link_to 'Show', @prescription %> |
-<%= link_to 'Back', prescriptions_path %>
+<%= link_to 'Back', patient_path(@patient) %>

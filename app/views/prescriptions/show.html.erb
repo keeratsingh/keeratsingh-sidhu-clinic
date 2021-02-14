@@ -10,10 +10,5 @@
   <%= @prescription.note %>
 </p>
 
-<p>
-  <strong>Patient:</strong>
-  <%= @prescription.patient_id %>
-</p>
-
-<%= link_to 'Edit', edit_prescription_path(@prescription) %> |
-<%= link_to 'Back', patient_path(@prescription.patient_id) %>
+<%= link_to 'Edit', edit_patient_prescription_path(@patient, @prescription) %> |
+<%= link_to 'Back', patient_path(@patient) %>
