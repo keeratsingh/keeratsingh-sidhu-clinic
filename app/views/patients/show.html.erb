@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @patient.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @patient.last_name %>
+</p>
+
+<p>
+  <strong>Dob:</strong>
+  <%= @patient.dob.strftime("%d-%B-%Y") %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @patient.phone_number %>
+</p>
+
+<%= link_to 'Edit', edit_patient_path(@patient) %> |
+<%= link_to 'Back', patients_path %>
+
+<p>
+  <strong>Prescriptions: </strong> <%= link_to 'Create New Prescription', patient_new_prescription_path(patient_id:params[:id]) %>
+  <table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Note</th>
+      <th>Prescription Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @prescriptions.each do |prescription| %>
+      <tr>
+        <td><%= prescription.name %></td>
+        <td><%= prescription.note %></td>
+        <td><%= prescription.created_at.strftime("%d-%B-%Y") %></td>
+        <td><%= link_to 'Edit', edit_prescription_path(prescription) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</p>
