@@ -1,6 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Patients</h1>
+<%= search_form_for @q do |f| %>
+  <%= f.label :first_name_or_last_name_or_phone_number_cont, "Search by Patient Name or Phone Number" %>
+  <%= f.search_field :first_name_or_last_name_or_phone_number_cont %>
+
+  <%= f.label :dob_eq, "Search by Patient Date of Birth (DD-MM-YYYY)" %>
+  <%= f.search_field :dob_eq %>
+
+  <br>
+  <%= f.submit %>
+<% end %>
 
 <table>
   <thead>
@@ -27,7 +37,8 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @patients %>
 
 <br>
 
-<%= link_to 'New Patient', new_patient_path %>
+<%= link_to 'Create New Patient', new_patient_path %>

@@ -1,14 +1,16 @@
 class PatientsController < ApplicationController
+  before_action :set_pagination_value
   before_action :set_patient, only: %i[ show edit update destroy ]
 
   # GET /patients or /patients.json
   def index
-    @patients = Patient.all
+    @q = Patient.ransack(params[:q])
+    @patients = @q.result().paginate(page: params[:page], per_page: @pagination_pages)
   end
 
   # GET /patients/1 or /patients/1.json
   def show
-    @prescriptions = Patient.find(params[:id]).prescriptions
+    @prescriptions = Patient.find(params[:id]).prescriptions.paginate(page: params[:page], per_page: @pagination_pages)
   end
 
   # GET /patients/new
@@ -66,5 +68,9 @@ class PatientsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def patient_params
       params.require(:patient).permit(:first_name, :last_name, :dob, :phone_number)
+    end
+
+    def set_pagination_value
+      @pagination_pages = 3
     end
 end

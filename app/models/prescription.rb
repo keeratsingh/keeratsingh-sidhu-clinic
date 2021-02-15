@@ -1,4 +1,4 @@
 class Prescription < ApplicationRecord
   belongs_to :patient
-  validates :body, presence: true
+  validates :patient, presence: true
 end
