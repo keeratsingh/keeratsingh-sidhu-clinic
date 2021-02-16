@@ -1,19 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class="jumbotron" >
+  <h1 class="display-4">Search Patient</h1>
+  <%= search_form_for @q do |f| %>
+    <div class="form-group">
+      <%= f.label :first_name_or_last_name_or_phone_number_cont, class: "sr-only" %>
+      <i class="fa fa-user"></i>
+      <%= f.search_field :first_name_or_last_name_or_phone_number_cont, autofocus: true,
+          class: "form-control input-login",
+          placeholder: "Search by Patient Name or Phone Number"
+      %>
+    </div>
+    <div class="form-group">
+      <%= f.label :dob_eq, class: "sr-only" %>
+      <i class="fa fa-user"></i>
+      <%= f.search_field :dob_eq,
+          class: "form-control input-login",
+          placeholder: "Search by Patient Date of Birth (DD-MM-YYYY)"
+      %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Search", class: "btn btn-primary btn-lg" %>
+      <%= link_to "Reset", request.path, class:"btn btn-danger btn-lg" %>
+      <%= link_to 'Create New Patient', new_patient_path, class:"btn btn-success btn-lg" %>
+    </div>
+  <% end %>
+</div>
 
-<h1>Patients</h1>
-<%= search_form_for @q do |f| %>
-  <%= f.label :first_name_or_last_name_or_phone_number_cont, "Search by Patient Name or Phone Number" %>
-  <%= f.search_field :first_name_or_last_name_or_phone_number_cont %>
-
-  <%= f.label :dob_eq, "Search by Patient Date of Birth (DD-MM-YYYY)" %>
-  <%= f.search_field :dob_eq %>
-
-  <br>
-  <%= f.submit %>
-<% end %>
-
-<table>
-  <thead>
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead class="thead-dark">
     <tr>
       <th>First name</th>
       <th>Last name</th>
@@ -30,15 +44,15 @@
         <td><%= patient.last_name %></td>
         <td><%= patient.dob.strftime("%d-%B-%Y") %></td>
         <td><%= patient.phone_number %></td>
-        <td><%= link_to 'Show', patient %></td>
-        <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
-        <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', patient, class:"btn btn-success btn-block" %></td>
+        <td><%= link_to 'Edit', edit_patient_path(patient), class:"btn btn-primary btn-block" %></td>
+        <td><%= link_to 'Delete', patient, class:"btn btn-danger btn-block", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= will_paginate @patients %>
-
+</div>
+<div class="d-flex justify-content-center">
+<%= will_paginate @patients, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>
 <br>
-
-<%= link_to 'Create New Patient', new_patient_path %>

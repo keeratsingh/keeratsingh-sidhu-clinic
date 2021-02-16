@@ -16,9 +16,6 @@ pre {
 a {
   color: #000; }
 
-a:visited {
-  color: #666; }
-
 th {
   padding-bottom: 5px; }
 
@@ -59,3 +56,14 @@ div.actions {
 
 label {
   display: block; }
+
+.container-login {
+  max-width: 45%;
+  margin: 0px auto !important;
+  padding-top: 5rem !important;
+}
+
+.center_div{
+  margin: 0 auto;
+  width:80% /* value of your choice which suits your alignment */
+}

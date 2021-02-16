@@ -22,7 +22,7 @@ gem 'jbuilder', '~> 2.7'
 # Add Search forms to the app easily.
 gem 'ransack', '~> 2.4.2'
 # Add Pagination to Views easily.
-gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap4'
 # Add User authentication.
 gem 'devise'
 ###################################################
