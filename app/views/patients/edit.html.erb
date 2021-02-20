@@ -3,4 +3,4 @@
 <%= render 'form', patient: @patient %>
 
 <%= link_to 'Show', @patient %> |
-<%= link_to 'Back', patients_path %>
+<%= link_to 'Back', request.headers["HTTP_REFERER"].nil? ? patients_path : request.headers["HTTP_REFERER"] %>

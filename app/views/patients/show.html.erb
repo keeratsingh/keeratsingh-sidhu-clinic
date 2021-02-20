@@ -1,43 +1,48 @@
-<p id="notice"><%= notice %></p>
-
 <div class="fixed-action-btn">
   <a class="btn-floating btn-large red">
     <i class="large material-icons">local_printshop</i>
   </a>
 </div>
 
-<p>
-  <strong>First name:</strong>
-  <%= @patient.first_name %>
-</p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @patient.last_name %>
-</p>
+<div class="row">
+ <div class="col s12">
+    <h2 class="header"><%= @patient.first_name + " " + @patient.last_name %></h2>
+    <div class="card horizontal grey lighten-4">
+      <div class="card-stacked">
+        <div class="card-content">
+          <h6 class="header"><%= "Date of Birth: #{@patient.dob.strftime("%d-%B-%Y")}" %></h6>
+          <h6 class="header"><%= "Phone number: #{@patient.phone_number}" %></h6>
+        </div>
+        <div class="card-action">
+          <%= link_to patients_path, class:"waves-effect waves-light btn" do %>
+                <i class="material-icons left">arrow_back</i>back
+          <% end %>
+          <%= link_to edit_patient_path(@patient), class:"waves-effect waves-light btn" do %>
+            <i class="material-icons left">create</i>Edit
+            <% end %>
+          <%= link_to new_patient_prescription_path(patient_id:params[:id]), class:"waves-effect waves-light btn" do %>
+            <i class="material-icons left">add</i>New Prescription
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Dob:</strong>
-  <%= @patient.dob.strftime("%d-%B-%Y") %>
-</p>
-
-<p>
-  <strong>Phone number:</strong>
-  <%= @patient.phone_number %>
-</p>
-
-<%= link_to 'Edit', edit_patient_path(@patient) %> |
-<%= link_to 'Back', patients_path %>
-
-<p>
-  <strong>Prescriptions: </strong> <%= link_to 'Create New Prescription', new_patient_prescription_path(patient_id:params[:id]) %>
-  <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Note</th>
+<div class="divider"></div>
+<div class="row" >
+  <div class="col s6 left-align"><h4>Prescriptions</h4></div>
+  <div class="col s6 right-align"><%= will_paginate @prescriptions %></div>
+</div>
+<div>
+  <table class="table responsive-table highlight striped">
+    <thead>
+      <tr class="row">
+      <th>Prescription Name</th>
+      <th>Prescription Note</th>
       <th>Prescription Date</th>
-      <th colspan="2">Actions</th>
+      <th class="col-actions">Actions</th>
     </tr>
   </thead>
 
@@ -47,11 +52,15 @@
         <td><%= prescription.name %></td>
         <td><%= prescription.note %></td>
         <td><%= prescription.created_at.strftime("%d-%B-%Y") %></td>
-        <td><%= link_to 'Edit', edit_patient_prescription_path(@patient, prescription) %></td>
-        <td><%= link_to 'Destroy', [@patient, prescription], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to edit_patient_prescription_path(@patient, prescription), class:"waves-effect waves-light btn-small" do %>
+          <i class="material-icons left">create</i>Edit
+          <% end %>
+          <%= link_to [@patient, prescription], class:"waves-effect waves-light btn-small", method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="material-icons left">delete</i> Delete
+          <% end %> 
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-</p>
-<%= will_paginate @prescriptions %>

@@ -95,13 +95,21 @@
 
 // Add Table background and borders.
 th {
-  background-color: #e0e0e023;
+  background-color: #91919123;
 }
 
 th,td
 {
   border:1px solid #e0e0e08e;
 }
+
+table.highlight > tbody > tr:hover {
+  background-color: #26a69917;
+}
+
+// table.highlight>tbody>tr {
+//   background-color: #26a69917;                                     /* whatever color you want */
+// }
 
 .col-actions {
   width: 28%;
