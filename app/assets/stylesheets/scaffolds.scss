@@ -92,3 +92,17 @@
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
+// Add Table background and borders.
+th {
+  background-color: #e0e0e023;
+}
+
+th,td
+{
+  border:1px solid #e0e0e08e;
+}
+
+.col-actions {
+  width: 28%;
+}

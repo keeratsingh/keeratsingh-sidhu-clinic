@@ -1,12 +1,3 @@
-<script>  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.fixed-action-btn');
-    var instances = M.FloatingActionButton.init(elems, {
-      direction: 'left'
-    });
-  });
-  </script>
-  
-
 <div class="container-body">
   <div class="row">
       <div class="col s12 left-align"><h3>Search Patients</h3></div>
@@ -15,33 +6,38 @@
       <div class="col s7 m6 l6">
          <div class="row">
           <%= search_form_for @q do |f| %>
-            <div class="col s6 m9 l9">
-                <div class="form-group">
-                  <%= f.search_field :first_name_or_last_name_or_phone_number_cont, autofocus: true,
-                      class: "form-control",
-                      placeholder: "Search by Name or Phone Number"
-                  %>
-                </div>
+            <div class="col s6 m9 l9 right-align">
+              <%= f.search_field :first_name_or_last_name_or_phone_number_cont, autofocus: true,
+                  class: "form-control",
+                  placeholder: "Search by Name or Phone Number"
+              %>
             </div>
-            <div class="col s6 m3 l3"><button class="btn-floating btn-medium waves-effect waves-light" type="submit" name="action">
-                    <i class="material-icons center">search</i></button>
-                    <a href="<%= request.path %>" class="btn-floating btn-medium waves-effect waves-light"><i class="material-icons center">clear</i></a>
+            <div class="col s6 m3 l3 right-align">
+              <button class="btn-floating btn-medium waves-effect waves-light" type="submit" name="action">
+                <i class="material-icons center">search</i>
+              </button>
+              <%= link_to request.path, class:"btn-floating btn-medium waves-effect waves-light" do %>
+                <i class="material-icons center">clear</i>
+              <% end %>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
 
   <div class="divider"></div>
+  <div class="right-align">
+    <%= will_paginate @patients %>
+  </div>
   <div>
-    <table class="table responsive-table striped">
+    <table class="table responsive-table highlight">
       <thead>
         <tr class="row">
           <th>First Name</th>
           <th>Last Name</th>
           <th>Date of Birth</th>
           <th>Contact</th>
-          <th style="width: 27%;">Actions</th>
+          <th class="col-actions">Actions</th>
         </tr>
       </thead>
 
@@ -53,16 +49,19 @@
             <td><%= patient.dob.strftime("%d-%B-%Y") %></td>
             <td><%= patient.phone_number %></td>
             <td>
-              <%= link_to 'Show', patient, class:"btn" %>
-              <%= link_to 'Edit', edit_patient_path(patient), class:"btn" %>
-              <%= link_to 'Delete', patient, class:"btn", method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to patient, class:"waves-effect waves-light btn-small" do %>
+                <i class="material-icons left">remove_red_eye</i>Show
+              <% end %>
+              <%= link_to edit_patient_path(patient), class:"waves-effect waves-light btn-small" do %>
+              <i class="material-icons left">create</i>Edit
+              <% end %>
+              <%= link_to patient, class:"waves-effect waves-light btn-small", method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <i class="material-icons left">delete</i> Delete
+              <% end %> 
             </td>
           </tr>
         <% end %>
       </tbody>
     </table>
-  </div>
-  <div class="center-align">
-    <%= will_paginate @patients %>
   </div>
 </div>
