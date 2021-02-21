@@ -111,6 +111,11 @@ table.highlight > tbody > tr:hover {
 //   background-color: #26a69917;                                     /* whatever color you want */
 // }
 
-.col-actions {
-  width: 28%;
+// .col-actions {
+//   width: 28%;
+// }
+
+.datetime select {
+  display:inline-flex;
+  width: auto;
 }

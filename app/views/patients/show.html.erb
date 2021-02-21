@@ -12,7 +12,7 @@
       <div class="card-stacked">
         <div class="card-content">
           <h6 class="header"><%= "Date of Birth: #{@patient.dob.strftime("%d-%B-%Y")}" %></h6>
-          <h6 class="header"><%= "Phone number: #{@patient.phone_number}" %></h6>
+          <h6 class="header"><%= "Phone number: #{number_to_phone(@patient.phone_number)}" %></h6>
         </div>
         <div class="card-action">
           <%= link_to patients_path, class:"waves-effect waves-light btn" do %>
@@ -22,7 +22,7 @@
             <i class="material-icons left">create</i>Edit
             <% end %>
           <%= link_to new_patient_prescription_path(patient_id:params[:id]), class:"waves-effect waves-light btn" do %>
-            <i class="material-icons left">add</i>New Prescription
+            <i class="material-icons left">note_add</i>New Prescription
             <% end %>
         </div>
       </div>

@@ -38,10 +38,10 @@
   <table class="table responsive-table highlight striped">
     <thead>
       <tr class="row">
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Date of Birth</th>
-        <th>Contact</th>
+        <th><%= sort_link(@q, :first_name, 'First Name', default_order: :asc) %></th>
+        <th><%= sort_link(@q, :last_name, 'Last Name') %></th>
+        <th><%= sort_link(@q, :dob, 'Date of Birth') %></th>
+        <th><%= sort_link(@q, :phone_number, 'Phone Number') %></th>
         <th class="col-actions">Actions</th>
       </tr>
     </thead>
@@ -52,7 +52,7 @@
           <td><%= patient.first_name %></td>
           <td><%= patient.last_name %></td>
           <td><%= patient.dob.strftime("%d-%B-%Y") %></td>
-          <td><%= patient.phone_number %></td>
+          <td><%= number_to_phone(patient.phone_number) %></td>
           <td>
             <%= link_to patient, class:"waves-effect waves-light btn-small" do %>
               <i class="material-icons left">remove_red_eye</i>Show

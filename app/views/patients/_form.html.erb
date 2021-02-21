@@ -1,8 +1,7 @@
-<%= form_with(model: patient) do |form| %>
+<%= form_with(model: patient) do |f| %>
   <% if patient.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
-
+      <h5><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h5>
       <ul>
         <% patient.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,27 +10,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+  <div class="field row">
+    <%= f.text_field :first_name, placeholder: 'First Name', required: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
+  <div class="field row">
+    <%= f.text_field :last_name, placeholder: 'Last Name', required: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :dob %>
-    <%= form.date_select :dob, start_year: 1920, order: [:day, :month, :year] %>
+  <div class="field row datetime">
+    <%= f.label 'Date of Birth' %> <br>
+     <%= f.date_select :dob, start_year: 1920, order: [:day, :month, :year] %> 
   </div>
 
-  <div class="field">
-    <%= form.label :phone_number %>
-    <%= form.text_field :phone_number, maxlength: 10 %>
+  <div class="field row">
+    <%= f.text_field :phone_number, maxlength: 10, placeholder: 'Phone Number', required: true, id:'phone'%>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    
+  
+  <div class="actions row">
+    <%= link_to patients_path, class:"waves-effect waves-light btn-large" do %>
+      <i class="material-icons left">arrow_back</i>back
+    <% end %>
+    <button class="waves-effect waves-light btn-large" type="submit" name="action">
+      <i class="material-icons left"><%= ( f.object.new_record? ? 'group_add' : 'create') %></i>
+      <%= ( f.object.new_record? ? "Create Patient" : "Update Patient") %>
+    </button>
+  </div>
   </div>
 <% end %>

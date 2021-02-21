@@ -5,6 +5,7 @@ class PatientsController < ApplicationController
   # GET /patients or /patients.json
   def index
     @q = Patient.ransack(params[:q])
+    @q.sorts = 'created_at desc' if @q.sorts.empty?
     @patients = @q.result().paginate(page: params[:page], per_page: @pagination_pages)
   end
 
@@ -20,11 +21,13 @@ class PatientsController < ApplicationController
 
   # GET /patients/1/edit
   def edit
+    set_phone_number_format
   end
 
   # POST /patients or /patients.json
   def create
     @patient = Patient.new(patient_params)
+    set_phone_number_format
 
     respond_to do |format|
       if @patient.save
@@ -40,6 +43,7 @@ class PatientsController < ApplicationController
   # PATCH/PUT /patients/1 or /patients/1.json
   def update
     respond_to do |format|
+      set_phone_number_format
       if @patient.update(patient_params)
         format.html { redirect_to @patient, notice: "Patient was successfully updated." }
         format.json { render :show, status: :ok, location: @patient }
@@ -72,5 +76,9 @@ class PatientsController < ApplicationController
 
     def set_pagination_value
       @pagination_pages = 2
+    end
+
+    def set_phone_number_format
+      @patient.phone_number = helpers.number_to_phone(@patient.phone_number)
     end
 end
