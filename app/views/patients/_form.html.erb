@@ -31,10 +31,10 @@
     
   
   <div class="actions row">
-    <%= link_to (f.object.new_record? ? patients_path : patient), class:"waves-effect waves-light btn-large" do %>
+    <%= link_to (f.object.new_record? ? patients_path : patient), class:"waves-effect waves-light btn" do %>
       <i class="material-icons left">arrow_back</i>back
     <% end %>
-    <button class="waves-effect waves-light btn-large" type="submit" name="action">
+    <button class="waves-effect waves-light btn" type="submit" name="action">
       <i class="material-icons left"><%= (f.object.new_record? ? 'group_add' : 'create') %></i>
       <%= (f.object.new_record? ? "Create Patient" : "Update Patient") %>
     </button>
