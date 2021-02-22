@@ -1,4 +1,3 @@
-<h1>Editing Prescription</h1>
+<h3 class="center-align">Editing Prescription for <%=@patient.first_name +  " " + @patient.last_name%> </h2>
 
 <%= render 'form', prescription: @prescription %>
-<%= link_to 'Back', patient_path(@patient) %>

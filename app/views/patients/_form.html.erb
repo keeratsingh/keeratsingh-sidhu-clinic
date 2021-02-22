@@ -10,11 +10,20 @@
     </div>
   <% end %>
 
+
   <div class="field row">
+    <% if f.object.new_record? %>
+     <i class="material-icons prefix">account_circle</i>
+    <% end %>
+     <%= (f.label 'First Name') unless f.object.new_record? %>
     <%= f.text_field :first_name, placeholder: 'First Name', required: true %>
   </div>
 
   <div class="field row">
+   <% if f.object.new_record? %>
+     <i class="material-icons prefix">account_circle</i>
+    <% end %>
+   <%= (f.label 'Last Name') unless f.object.new_record? %>
     <%= f.text_field :last_name, placeholder: 'Last Name', required: true %>
   </div>
 
@@ -24,7 +33,11 @@
   </div>
 
   <div class="field row">
-    <%= f.text_field :phone_number, maxlength: 10, placeholder: 'Phone Number', required: true, id:'phone'%>
+   <% if f.object.new_record? %>
+     <i class="material-icons prefix">phone</i>
+    <% end %>
+   <%= (f.label 'Phone Number (xxx-xxx-xxxx)') unless f.object.new_record? %>
+    <%= f.text_field :phone_number, maxlength: 12, placeholder: 'Phone Number (xxx-xxx-xxxx)', required: true, id:'phone'%>
   </div>
 
   <div class="actions">

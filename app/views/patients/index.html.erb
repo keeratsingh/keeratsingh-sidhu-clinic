@@ -31,7 +31,7 @@
 
 <div class="divider"></div>
 <div class="row" >
-  <div class="col s6 left-align"><h4>Patients</h4></div>
+  <div class="col s6 left-align"><h4><i class="material-icons small">group</i> Patients</h4></div>
   <div class="col s6 right-align"><%= will_paginate @patients %></div>
 </div>
 <div>
@@ -60,7 +60,7 @@
             <%= link_to edit_patient_path(patient), class:"waves-effect waves-light btn-small" do %>
             <i class="material-icons left">create</i>Edit
             <% end %>
-            <%= link_to patient, class:"waves-effect waves-light btn-small", method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= link_to patient, class:"waves-effect waves-light btn-small red", method: :delete, data: { confirm: 'Are you sure?' } do %>
               <i class="material-icons left">delete</i> Delete
             <% end %> 
           </td>

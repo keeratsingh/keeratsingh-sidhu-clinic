@@ -5,7 +5,7 @@ class PatientsController < ApplicationController
   # GET /patients or /patients.json
   def index
     @q = Patient.ransack(params[:q])
-    @q.sorts = 'created_at desc' if @q.sorts.empty?
+    @q.sorts = 'modified_at desc' if @q.sorts.empty?
     @patients = @q.result().paginate(page: params[:page], per_page: @pagination_pages)
   end
 
@@ -75,7 +75,7 @@ class PatientsController < ApplicationController
     end
 
     def set_pagination_value
-      @pagination_pages = 2
+      @pagination_pages = 5
     end
 
     def set_phone_number_format

@@ -1,8 +1,7 @@
-<%= form_with(model: [@patient, prescription]) do |form| %>
+<%= form_with(model: [@patient, prescription]) do |f| %>
   <% if prescription.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(prescription.errors.count, "error") %> prohibited this prescription from being saved:</h2>
-
+    <div id="error_explanation red">
+      <h5><%= pluralize(prescription.errors.count, "error") %> prohibited this prescription from being saved:</h5>
       <ul>
         <% prescription.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,17 +10,30 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="field row">
+     <% if f.object.new_record? %>
+     <i class="material-icons prefix">medication</i>
+    <% end %>
+    <%= (f.label 'Prescription Name') unless f.object.new_record? %>
+    <%= f.text_field :name, placeholder: 'Prescription Name', required: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :note %>
-    <%= form.text_area :note %>
+  <div class="field row">
+     <% if f.object.new_record? %>
+     <i class="material-icons prefix">create</i>
+    <% end %>
+    <%= (f.label 'Prescription Note') unless f.object.new_record? %>
+    <%= f.text_field :note, placeholder: 'Prescription Note', required: false %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions row">
+    <%= link_to (f.object.new_record? ? patient_path(@patient) : patient_path(@patient)), class:"waves-effect waves-light btn" do %>
+      <i class="material-icons left">arrow_back</i>back
+    <% end %>
+    <button class="waves-effect waves-light btn" type="submit" name="action">
+      <i class="material-icons left"><%= (f.object.new_record? ? 'medication' : 'create') %></i>
+      <%= (f.object.new_record? ? "Create Prescription" : "Update Prescription") %>
+    </button>
+  </div>
   </div>
 <% end %>
