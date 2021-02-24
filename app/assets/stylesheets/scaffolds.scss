@@ -1,20 +1,11 @@
-// body {
-//   background-color: #fff;
-//   color: #333;
-//   padding: 10px; }
-
-// body, p, ol, ul, td {
-//   font-family: verdana, arial, helvetica, sans-serif;
-//   font-size: 13px;
-//   line-height: 18px; }
-
-// pre {
-//   background-color: #eee;
-//   padding: 10px;
-//   font-size: 11px; }
-
-// a {
-//   color: #000; }
+body {
+  // background-color: rgba(209, 169, 169, 0.062);
+  background-color: #ffffff;
+  opacity: 1;
+  background-image:  radial-gradient(#fbb4d18e 0.4px, transparent 0.4px), radial-gradient(#fbb4d16c 0.4px, #ffffff 0.4px);
+  background-size: 16px 16px;
+  background-position: 0 0,8px 8px;
+ }
 
 @font-face {
   font-family: 'Roboto';
@@ -26,56 +17,11 @@
        format('woff');
 }
 
-// body :not(.nav-wrapper){
-//   padding-left: 1rem;
-//   padding-right: 1rem;
-// }
-
-// th {
-//   padding-bottom: 5px; }
-
-// td {
-//   padding: 0 5px 7px; }
-
-// div.field,
-// div.actions {
-//   margin-bottom: 10px; }
-
-// #notice {
-//   color: green; }
-
-// .field_with_errors {
-//   padding: 2px;
-//   background-color: red;
-//   display: table; }
-
-// #error_explanation {
-//   width: 450px;
-//   border: 2px solid red;
-//   padding: 7px 7px 0;
-//   margin-bottom: 20px;
-//   background-color: #f0f0f0; }
-
-// #error_explanation h2 {
-//   text-align: left;
-//   font-weight: bold;
-//   padding: 5px 5px 5px 15px;
-//   font-size: 12px;
-//   margin: -7px -7px 0;
-//   background-color: #c00;
-//   color: #fff; }
-
-// #error_explanation ul li {
-//   font-size: 12px;
-//   list-style: square; }
-
-// label {
-//   display: block; }
-
 .container-login {
-  max-width: 45%;
+  min-width: 40%;
+  max-width: 55%;
   margin: 0px auto !important;
-  padding-top: 5rem !important;
+  padding: 5% !important;
 }
 
 .container-body {
@@ -107,14 +53,6 @@ table.highlight > tbody > tr:hover {
   background-color: #26a69917;
 }
 
-// table.highlight>tbody>tr {
-//   background-color: #26a69917;                                     /* whatever color you want */
-// }
-
-// .col-actions {
-//   width: 28%;
-// }
-
 .datetime select {
   display:inline-flex;
   width: auto;
@@ -128,7 +66,31 @@ table.highlight > tbody > tr:hover {
   }
 }
 
-// .field_with_errors {
-//   @extend .control-group;
-//   @extend .error;
-//  }
+nav .brand-logo { 
+  font-size: 1.5rem;
+}
+
+@media only screen and (min-width: 325px){
+  nav .brand-logo { 
+    font-size: 1.2rem;
+  }
+  .row .login-header {
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (min-width: 1024px){
+  nav .brand-logo { 
+    font-size: 1.6rem;
+  }
+  .row .login-header {
+    font-size: 1.6rem;
+  }
+}
+
+.footer {
+  position:fixed;
+  bottom:0;
+  text-align: center;
+  width: 100%;
+}
