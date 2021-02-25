@@ -2,7 +2,6 @@
 <div class="card horizontal grey lighten-5 container-login">
   <div class="card-stacked">
     <div class="card-content">
-    <div class="row"><h5 class="login-header center-align">Please, login into your account</h5></div>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="row">
           <%= f.label :email, class: "sr-only" %>
@@ -15,8 +14,8 @@
           <%= f.password_field :password, autocomplete: "current-password", class: "form-control input-login", placeholder: "Password" %>
         </div>
         <div class="row center-align">
-          <button class="waves-effect waves-light btn-large" type="submit" name="action">
-            <i class="material-icons left">login</i>Login
+          <button class="waves-effect waves-light btn-large btn-block" type="submit" name="action">
+            <i class="material-icons center">login</i> Login
           </button>
         </div>
       <% end %>

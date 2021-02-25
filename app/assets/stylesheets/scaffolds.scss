@@ -4,7 +4,7 @@ body {
   opacity: 1;
   background-image:  radial-gradient(#fbb4d18e 0.4px, transparent 0.4px), radial-gradient(#fbb4d16c 0.4px, #ffffff 0.4px);
   background-size: 16px 16px;
-  background-position: 0 0,8px 8px;
+  background-position: 0 0,8px 8px;  
  }
 
 @font-face {
@@ -20,8 +20,8 @@ body {
 .container-login {
   min-width: 40%;
   max-width: 55%;
-  margin: 0px auto !important;
-  padding: 5% !important;
+  margin: 4% auto !important;
+  padding: 4% !important;
 }
 
 .container-body {
@@ -67,30 +67,72 @@ table.highlight > tbody > tr:hover {
 }
 
 nav .brand-logo { 
-  font-size: 1.5rem;
+  font-size: .5rem;
 }
 
 @media only screen and (min-width: 325px){
   nav .brand-logo { 
-    font-size: 1.2rem;
+    font-size: .75rem;
   }
   .row .login-header {
-    font-size: 1.2rem;
+    font-size: .75rem;
+  }
+  .footer {
+    font-size: .55rem;
   }
 }
 
 @media only screen and (min-width: 1024px){
   nav .brand-logo { 
-    font-size: 1.6rem;
+    font-size: 1.2rem;
   }
   .row .login-header {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
+  }
+  .footer {
+    font-size: 0.8rem;
+  }
+  
+}
+
+@media only screen and (min-width: 1600px){
+  nav .brand-logo { 
+    font-size: 1.4rem;
+  }
+  .row .login-header {
+    font-size: 1.4rem;
+  }
+  .footer {
+    font-size: 1rem;
   }
 }
 
 .footer {
+  z-index: 99;
+  height: 4rem;
   position:fixed;
+  background-color: #ee6e73;
+  color: #ffffff;
   bottom:0;
   text-align: center;
   width: 100%;
+  // background-color: #c01919;
+  padding-top: 0.75rem;
+  margin: 0 0 -1rem 0;
+  font-family: 'Roboto';
+  font-style:normal;
+  font-weight: 200;
+  src: local('Roboto Regular'), 
+       local('Roboto-Regular'), 
+       url(http://themes.googleusercontent.com/static/fonts/roboto/v11/2UX7WLTfW3W8TclTUvlFyQ.woff) 
+       format('woff');
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.material-icons{
+  display: inline-flex;
+  vertical-align: top;
 }
