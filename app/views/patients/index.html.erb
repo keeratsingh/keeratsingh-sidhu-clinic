@@ -53,7 +53,7 @@
           <td><%= patient.last_name %></td>
           <td><%= patient.dob.strftime("%d-%B-%Y") %></td>
           <td><%= number_to_phone(patient.phone_number) %></td>
-          <td>
+          <td class="col-action">
             <%= link_to patient, class:"waves-effect waves-light btn-small" do %>
               <i class="material-icons left">remove_red_eye</i>Show
             <% end %>

@@ -40,6 +40,9 @@ body {
 }
 
 // Add Table background and borders.
+table {
+  margin-bottom: 1rem;
+}
 th {
   background-color: #91919123;
 }
@@ -111,21 +114,13 @@ nav .brand-logo {
   z-index: 99;
   height: 4rem;
   position:fixed;
-  background-color: #ee6e73;
-  color: #ffffff;
+  background-color: #ffffff;
   bottom:0;
   text-align: center;
   width: 100%;
   // background-color: #c01919;
   padding-top: 0.75rem;
   margin: 0 0 -1rem 0;
-  font-family: 'Roboto';
-  font-style:normal;
-  font-weight: 200;
-  src: local('Roboto Regular'), 
-       local('Roboto-Regular'), 
-       url(http://themes.googleusercontent.com/static/fonts/roboto/v11/2UX7WLTfW3W8TclTUvlFyQ.woff) 
-       format('woff');
 }
 
 .btn-block {
@@ -135,4 +130,8 @@ nav .brand-logo {
 .material-icons{
   display: inline-flex;
   vertical-align: top;
+}
+
+.col-action{
+  width: max-content;;
 }
