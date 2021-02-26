@@ -52,6 +52,35 @@ th,td
   border:1px solid #e0e0e08e;
 }
 
+@media only screen and (max-width: 992px) {
+  table.responsive-table tr {
+    border-bottom: none;
+    padding: 0      
+  }
+
+  table.responsive-table thead {
+    border: 0;
+  };
+
+  table.responsive-table th {
+    display: block;
+    text-align: left;
+    max-height: 4em;
+  }
+
+  table.responsive-table thead tr {
+    display: block;
+    padding: 0;
+}
+
+  table.responsive-table td {
+    display: block;
+    max-height: 4em;
+    text-align: left;
+  }
+
+}
+
 table.highlight > tbody > tr:hover {
   background-color: #26a69917;
 }
@@ -75,52 +104,49 @@ nav .brand-logo {
 
 @media only screen and (min-width: 325px){
   nav .brand-logo { 
-    font-size: .75rem;
+    font-size: 1rem;
   }
   .row .login-header {
-    font-size: .75rem;
-  }
-  .footer {
-    font-size: .55rem;
-  }
-}
-
-@media only screen and (min-width: 1024px){
-  nav .brand-logo { 
-    font-size: 1.2rem;
-  }
-  .row .login-header {
-    font-size: 1.2rem;
-  }
-  .footer {
-    font-size: 0.8rem;
-  }
-  
-}
-
-@media only screen and (min-width: 1600px){
-  nav .brand-logo { 
-    font-size: 1.4rem;
-  }
-  .row .login-header {
-    font-size: 1.4rem;
+    font-size: 1rem;
   }
   .footer {
     font-size: 1rem;
   }
 }
 
-.footer {
+@media only screen and (min-width: 1024px){
+  nav .brand-logo { 
+    font-size: 1.5rem;
+  }
+  .row .login-header {
+    font-size: 1.2rem;
+  }
+  .footer {
+    font-size: 1rem;
+  }
+  
+}
+
+@media only screen and (min-width: 1600px){
+  nav .brand-logo { 
+    font-size: 2rem;
+  }
+  .row .login-header {
+    font-size: 1.2rem;
+  }
+  .footer {
+    font-size: 1rem;
+  }
+}
+
+footer {
   z-index: 99;
   height: 4rem;
-  position:fixed;
-  background-color: #ffffff;
+  padding-top: 1rem;
+  // position:fixed;
+  //background-color: #fa0000;
   bottom:0;
   text-align: center;
-  width: 100%;
-  // background-color: #c01919;
-  padding-top: 0.75rem;
-  margin: 0 0 -1rem 0;
 }
 
 .btn-block {
@@ -132,6 +158,12 @@ nav .brand-logo {
   vertical-align: top;
 }
 
-.col-action{
-  width: max-content;;
+.col-actions{
+  min-width: max-content;
+}
+
+.row {
+  margin-left: auto;
+  margin-right: auto;
+  margin: 10px;
 }

@@ -1,22 +1,17 @@
 <div class="row">
-    <%
-=begin%>
- <div class="col s12 left-align"><h3>Search Patients</h3></div> 
-<%
-=end%>
     <p style="padding-top:1rem">
-    <div class="col s4 "><a href="<%= new_patient_path %>" class="waves-effect waves-light btn-large"><i class="material-icons left">group_add</i>New Patient</a></div>
-    <div class="col s1 m2 l2"></div>
-    <div class="col s7 m6 l6">
+    <div class="col s12 m12 l4"><a href="<%= new_patient_path %>" class="waves-effect waves-light btn-large"><i class="material-icons left">group_add</i>New Patient</a></div>
+    <div class="col s12 m12 l2"></div>
+    <div class="col s12 m16 l6">
         <div class="row">
         <%= search_form_for @q do |f| %>
-          <div class="col s6 m9 l9 right-align">
+          <div class="col s12 m9 l9 right-align">
             <%= f.search_field :first_name_or_last_name_or_phone_number_cont, autofocus: true,
                 class: "form-control",
                 placeholder: "Search by Name or Phone Number"
             %>
           </div>
-          <div class="col s6 m3 l3 right-align">
+          <div class="col s12 m3 l3 left-align">
             <button class="btn-floating btn-medium waves-effect waves-light" type="submit" name="action">
               <i class="material-icons center">search</i>
             </button>
@@ -30,42 +25,50 @@
   </div>
 
 <div class="divider"></div>
-<div class="row" >
-  <div class="col s6 left-align"><h4><i class="material-icons small">group</i> Patients</h4></div>
-  <div class="col s6 right-align"><%= will_paginate @patients %></div>
-</div>
-<div>
-  <table class="table responsive-table highlight striped">
-    <thead>
-      <tr class="row">
-        <th><%= sort_link(@q, :first_name, 'First Name', default_order: :asc) %></th>
-        <th><%= sort_link(@q, :last_name, 'Last Name') %></th>
-        <th><%= sort_link(@q, :dob, 'Date of Birth') %></th>
-        <th><%= sort_link(@q, :phone_number, 'Phone Number') %></th>
-        <th class="col-actions">Actions</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @patients.each do |patient| %>
+<% if @patients.blank? %>
+  <div class ="row">
+    <div class="col s12 center-align">
+      <h5><i class="material-icons small">group</i> No patients found</h5>
+      </div>
+  </div>
+<% else %>
+  <div class="row" >
+    <div class="col s6 left-align"><h4><i class="material-icons small">group</i> Patients</h4></div>
+    <div class="col s6 right-align"><%= will_paginate @patients %></div>
+  </div>
+  <div>
+    <table class="table responsive-table highlight striped">
+      <thead>
         <tr class="row">
-          <td><%= patient.first_name %></td>
-          <td><%= patient.last_name %></td>
-          <td><%= patient.dob.strftime("%d-%B-%Y") %></td>
-          <td><%= number_to_phone(patient.phone_number) %></td>
-          <td class="col-action">
-            <%= link_to patient, class:"waves-effect waves-light btn-small" do %>
-              <i class="material-icons left">remove_red_eye</i>Show
-            <% end %>
-            <%= link_to edit_patient_path(patient), class:"waves-effect waves-light btn-small" do %>
-            <i class="material-icons left">create</i>Edit
-            <% end %>
-            <%= link_to patient, class:"waves-effect waves-light btn-small red", method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <i class="material-icons left">delete</i> Delete
-            <% end %> 
-          </td>
+          <th><%= sort_link(@q, :first_name, 'First Name', default_order: :asc) %></th>
+          <th><%= sort_link(@q, :last_name, 'Last Name') %></th>
+          <th><%= sort_link(@q, :dob, 'Date of Birth') %></th>
+          <th><%= sort_link(@q, :phone_number, 'Phone Number') %></th>
+          <th class="col-actions">Actions</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+      </thead>
+
+      <tbody>
+        <% @patients.each do |patient| %>
+          <tr class="row">
+            <td><%= patient.first_name %></td>
+            <td><%= patient.last_name %></td>
+            <td><%= patient.dob.strftime("%d-%B-%Y") %></td>
+            <td><%= number_to_phone(patient.phone_number) %></td>
+            <td class="col-actions">
+              <%= link_to patient, class:"waves-effect waves-light btn-small" do %>
+                <i class="material-icons left">remove_red_eye</i>Show
+              <% end %>
+              <%= link_to edit_patient_path(patient), class:"waves-effect waves-light btn-small" do %>
+              <i class="material-icons left">create</i>Edit
+              <% end %>
+              <%= link_to patient, class:"waves-effect waves-light btn-small red", method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <i class="material-icons left">delete</i> Delete
+              <% end %> 
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

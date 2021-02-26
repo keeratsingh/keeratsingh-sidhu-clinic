@@ -1,12 +1,7 @@
 <div class="row">
-  <div class="row valign-wrapper">
-    <div class="col s6 left-align">
+  <div class="row">
+    <div class="col s12 center-align">
       <h4 class="header"><i class="material-icons small">person</i> <%= @patient.first_name + " " + @patient.last_name %></h4>
-    </div>
-    <div class="col s6 right-align">
-      <%= link_to patient_path, class:"waves-effect waves-light btn-large red", method: :delete, data: { confirm: 'Are you sure?' } do %>
-        <i class="material-icons left">delete</i> Delete
-      <% end %>
     </div>
   </div>
 
@@ -24,6 +19,9 @@
           <%= link_to edit_patient_path(@patient), class:"waves-effect waves-light btn" do %>
             <i class="material-icons left">create</i>Edit
           <% end %>
+          <%= link_to patient_path, class:"waves-effect waves-light btn red", method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="material-icons left">delete</i> Delete
+          <% end %>
           <%= link_to new_patient_prescription_path(patient_id:params[:id]), class:"waves-effect waves-light btn" do %>
             <i class="material-icons left">medication</i>New Prescription
           <% end %>
@@ -34,36 +32,45 @@
 </div>
 
 <div class="divider"></div>
-<div class="row" >
-  <div class="col s6 left-align"><h4><i class="material-icons small">medication</i> Prescriptions</h4></div>
-  <div class="col s6 right-align"><%= will_paginate @prescriptions %></div>
+<% if @prescriptions.blank? %>
+  <div class ="row">
+    <div class="col s12 center-align">
+      <h5><i class="material-icons small">medication</i> No prescriptions found</h5>
+      </div>
+  </div>
+<% else %>
+<div class="row ">
+  <div class="col s12 m6 l6 left-align"><h4><i class="material-icons small">medication</i> Prescriptions</h4></div>
+  <div class="col s12 m6 l6 right-align"><%= will_paginate @prescriptions %></div>
 </div>
 <div>
   <table class="table responsive-table highlight striped">
     <thead>
       <tr class="row">
-      <th>Prescription Name</th>
-      <th>Prescription Note</th>
-      <th>Prescription Date</th>
-      <th class="col-actions">Actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @prescriptions.each do |prescription| %>
-      <tr>
-        <td><%= prescription.name %></td>
-        <td><%= prescription.note %></td>
-        <td><%= prescription.created_at.strftime("%d-%B-%Y") %></td>
-        <td>
-          <%= link_to edit_patient_prescription_path(@patient, prescription), class:"waves-effect waves-light btn-small" do %>
-          <i class="material-icons left">create</i>Edit
-          <% end %>
-          <%= link_to [@patient, prescription], class:"waves-effect waves-light btn-small red", method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <i class="material-icons left">delete</i> Delete
-          <% end %>
-        </td>
+        <th>Prescription Name</th>
+        <th>Prescription Note</th>
+        <th>Prescription Date</th>
+        <th class="col-actions">Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @prescriptions.each do |prescription| %>
+        <tr class="row">
+          <td><%= prescription.name %></td>
+          <td><%= prescription.note %></td>
+          <td><%= prescription.created_at.strftime("%d-%B-%Y") %></td>
+          <td class="col-actions">
+            <%= link_to edit_patient_prescription_path(@patient, prescription), class:"waves-effect waves-light btn-small" do %>
+            <i class="material-icons left">create</i>Edit
+            <% end %>
+            <%= link_to [@patient, prescription], class:"waves-effect waves-light btn-small red", method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <i class="material-icons left">delete</i> Delete
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%end %>
