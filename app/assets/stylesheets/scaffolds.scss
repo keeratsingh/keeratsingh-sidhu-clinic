@@ -43,6 +43,7 @@ body {
 table {
   margin-bottom: 1rem;
 }
+
 th {
   background-color: #91919123;
 }
@@ -50,6 +51,7 @@ th {
 th,td
 {
   border:1px solid #e0e0e08e;
+  min-width: max-content;
 }
 
 @media only screen and (max-width: 992px) {
@@ -79,6 +81,11 @@ th,td
     text-align: left;
   }
 
+  .container-login {
+    min-width: 80%;
+    margin: 4% auto !important;
+    padding: 4% !important;
+  }
 }
 
 table.highlight > tbody > tr:hover {
