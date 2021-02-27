@@ -81,6 +81,10 @@ th,td
     text-align: left;
   }
 
+  .col-actions-header {
+    min-width: max-content;
+  }
+
   .container-login {
     min-width: 80%;
     margin: 4% auto !important;
@@ -166,7 +170,7 @@ footer {
 }
 
 .col-actions{
-  min-width: max-content;
+  width: max-content;
 }
 
 .row {
