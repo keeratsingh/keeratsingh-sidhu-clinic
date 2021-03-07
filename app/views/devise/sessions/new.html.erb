@@ -4,9 +4,9 @@
     <div class="card-content">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="row">
-          <%= f.label :email, class: "sr-only" %>
+          <%= f.label :username, class: "sr-only" %>
           <i class="fa fa-user"></i>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control input-login", placeholder: "Email" %>
+          <%= f.text_field :username, autofocus: true, class: "form-control input-login", placeholder: "Username" %>
         </div>
         <div class="row">
           <%= f.label :password, class: "sr-only" %>
