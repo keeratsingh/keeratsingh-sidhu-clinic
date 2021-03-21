@@ -68,7 +68,7 @@ class PatientsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def patient_params
-      params.require(:patient).permit(:first_name, :last_name, :dob, :phone_number)
+      params.require(:patient).permit(:first_name, :last_name, :dob, :phone_number, :address)
     end
 
     def set_pagination_value

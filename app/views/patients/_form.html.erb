@@ -27,7 +27,16 @@
    <%= (f.label 'Phone Number (xxx-xxx-xxxx)') unless f.object.new_record? %>
     <%= f.text_field :phone_number, maxlength: 12, placeholder: 'Phone Number (xxx-xxx-xxxx)', required: true%>
   </div>
-     <% if patient.errors.any? %>
+
+  <div class="field row">
+    <% if f.object.new_record? %>
+     <i class="material-icons prefix">home</i>
+    <% end %>
+     <%= (f.label 'Address') unless f.object.new_record? %>
+    <%= f.text_field :address, placeholder: 'Address', required: false %>
+  </div>
+
+  <% if patient.errors.any? %>
     <div id="error_explanation" class="center-align">
       <ul>
         <% patient.errors.messages.values.each do |msg| %>

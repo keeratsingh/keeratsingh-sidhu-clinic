@@ -11,6 +11,7 @@
         <div class="card-content">
           <h6 class="header"><%= "Date of Birth: #{@patient.dob.strftime("%d-%B-%Y")}" %></h6>
           <h6 class="header"><%= "Phone number: #{number_to_phone(@patient.phone_number)}" %></h6>
+          <h6 class="header"> <%= "Address: #{@patient.address}" %></h6>
         </div>
         <div class="card-action">
           <%= link_to patients_path, class:"waves-effect waves-light btn" do %>
