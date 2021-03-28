@@ -51,6 +51,8 @@
         <th>Prescription Name</th>
         <th>Prescription Note</th>
         <th>Prescription Date</th>
+        <th>Visiting Date</th>
+        <th>Fee</th>
         <th class="col-actions-header">Actions</th>
       </tr>
     </thead>
@@ -60,7 +62,9 @@
         <tr class="row">
           <td><%= prescription.name %></td>
           <td><%= prescription.note %></td>
-          <td><%= prescription.created_at.strftime("%d-%B-%Y") %></td>
+          <td><%= prescription.prescription_date&.strftime("%d-%B-%Y") %></td>
+          <td><%= prescription.visting_date&.strftime("%d-%B-%Y") %></td>
+          <td>$<%= number_with_precision(prescription.fee, precision:2) %></td>
           <td class="col-actions">
             <%= link_to edit_patient_prescription_path(@patient, prescription), class:"waves-effect waves-light btn-small" do %>
             <i class="material-icons left">create</i>Edit
