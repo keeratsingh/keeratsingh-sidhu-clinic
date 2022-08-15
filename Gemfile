@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '3.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.2', '>= 6.1.2.1'
@@ -25,6 +25,10 @@ gem 'ransack', '~> 2.4.2'
 gem 'will_paginate-materialize', git: 'https://github.com/mldoscar/will_paginate-materialize', branch: 'master'
 # Add User authentication.
 gem 'devise'
+# Ignore net-smtp
+gem 'net-smtp', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false
 ###################################################
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

@@ -15,6 +15,14 @@
     <%= f.text_field :last_name, placeholder: 'Last Name', required: true %>
   </div>
 
+  <div class="field row">
+  <% if f.object.new_record? %>
+    <i class="material-icons prefix">account_circle</i>
+   <% end %>
+  <%= (f.label 'Gender') unless f.object.new_record? %>
+   <%= f.text_field :gender, placeholder: 'Gender', required: false %>
+ </div>
+
   <div class="field row datetime">
     <%= f.label 'Date of Birth' %> <br>
      <%= f.date_select :dob, start_year: 1920, order: [:day, :month, :year] %> 

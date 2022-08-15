@@ -9,6 +9,7 @@
     <div class="card horizontal grey lighten-4">
       <div class="card-stacked">
         <div class="card-content">
+          <h6 class="header"><%= "Gender: #{@patient.gender}" %></h6>
           <h6 class="header"><%= "Date of Birth: #{@patient.dob.strftime("%d-%B-%Y")}" %></h6>
           <h6 class="header"><%= "Phone number: #{number_to_phone(@patient.phone_number)}" %></h6>
           <h6 class="header"> <%= "Address: #{@patient.address}" %></h6>
@@ -58,7 +59,7 @@
     </thead>
 
     <tbody>
-      <% @prescriptions.each do |prescription| %>
+      <% @prescriptions.sort_by(&:visting_date).reverse.each do |prescription| %>
         <tr class="row">
           <td><%= prescription.name %></td>
           <td><%= prescription.note %></td>

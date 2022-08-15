@@ -17,6 +17,7 @@ class PatientsTest < ApplicationSystemTestCase
     fill_in "Dob", with: @patient.dob
     fill_in "First name", with: @patient.first_name
     fill_in "Last name", with: @patient.last_name
+    fill_in "Gender", with: @patient.gender
     fill_in "Phone number", with: @patient.phone_number
     click_on "Create Patient"
 
@@ -31,6 +32,7 @@ class PatientsTest < ApplicationSystemTestCase
     fill_in "Dob", with: @patient.dob
     fill_in "First name", with: @patient.first_name
     fill_in "Last name", with: @patient.last_name
+    fill_in "Gender", with: @patient.gender
     fill_in "Phone number", with: @patient.phone_number
     click_on "Update Patient"
 
