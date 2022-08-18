@@ -59,7 +59,7 @@
     </thead>
 
     <tbody>
-      <% @prescriptions.each do |prescription| %>
+      <% @prescriptions.order(visting_date: :desc).each do |prescription| %>
         <tr class="row">
           <td><%= prescription.name %></td>
           <td><%= prescription.note %></td>
