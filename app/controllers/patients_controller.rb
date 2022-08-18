@@ -73,6 +73,6 @@ class PatientsController < ApplicationController
     end
 
     def set_pagination_value
-      @pagination_pages = 10
+      @pagination_pages = 15
     end
 end
