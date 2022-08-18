@@ -42,10 +42,11 @@
         <tr class="row">
           <th><%= sort_link(@q, :first_name, 'First Name', default_order: :asc) %></th>
           <th><%= sort_link(@q, :last_name, 'Last Name') %></th>
-          <th><%= sort_link(@q, :gender, 'Gender') %></th>
-          <th><%= sort_link(@q, :dob, 'Date of Birth') %></th>
-          <th><%= sort_link(@q, :phone_number, 'Phone Number') %></th>
-          <th><%= sort_link(@q, :address, 'Address') %></th>
+          <th>Gender</th>
+          <th>Age (Years)</th>
+          <th>Date of Birth</th>
+          <th>Phone Number</th>
+          <th>Address</th>
           <th class="col-actions-header">Actions</th>
         </tr>
       </thead>
@@ -56,6 +57,7 @@
             <td><%= patient.first_name %></td>
             <td><%= patient.last_name %></td>
             <td><%= patient.gender %></td>
+            <td><%= patient.calculate_age(patient.dob)%></td>
             <td><%= patient.dob.strftime("%d-%B-%Y") %></td>
             <td><%= number_to_phone(patient.phone_number) %></td>
             <td><%= patient.address %></td>

@@ -5,14 +5,13 @@ class PatientsController < ApplicationController
   # GET /patients or /patients.json
   def index
     @q = Patient.ransack(params[:q])
-    @q.sorts = 'modified_at desc' if @q.sorts.empty?
+    @q.sorts = 'updated_at desc' if @q.sorts.empty?
     @patients = @q.result().paginate(page: params[:page], per_page: @pagination_pages)
   end
 
   # GET /patients/1 or /patients/1.json
   def show
     @prescriptions = Patient.find(params[:id]).prescriptions.paginate(page: params[:page], per_page: @pagination_pages)
-    # @prescriptions = [] if @prescriptions.nil?
   end
 
   # GET /patients/new
@@ -60,7 +59,7 @@ class PatientsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_patient

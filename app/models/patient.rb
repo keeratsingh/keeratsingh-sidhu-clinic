@@ -9,4 +9,10 @@ class Patient < ApplicationRecord
      validates_uniqueness_of :first_name,
       scope: [:last_name, :dob, :phone_number],
       message: 'A Patient with these details already exists.'
-end
+
+    def calculate_age(dob)
+      return 'Invalid DOB' if dob.nil?
+      Date.today.year - dob.year 
+    end
+    
+  end
