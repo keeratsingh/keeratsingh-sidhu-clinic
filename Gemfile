@@ -22,7 +22,8 @@ gem 'jbuilder', '~> 2.7'
 # Add Search forms to the app easily.
 gem 'ransack', '~> 2.4.2'
 # Add Pagination to Views easily.
-gem 'will_paginate-materialize', git: 'https://github.com/mldoscar/will_paginate-materialize', branch: 'master'
+# gem 'will_paginate-materialize', git: 'https://github.com/mldoscar/will_paginate-materialize', branch: 'master'
+gem 'will_paginate', '~> 3.3'
 # Add User authentication.
 gem 'devise'
 # Ignore net-smtp
