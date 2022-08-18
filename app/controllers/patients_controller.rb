@@ -12,7 +12,7 @@ class PatientsController < ApplicationController
   # GET /patients/1 or /patients/1.json
   def show
     @prescriptions = Patient.find(params[:id]).prescriptions.paginate(page: params[:page], per_page: @pagination_pages)
-    @prescriptions = [] if @prescriptions.nil?
+    # @prescriptions = [] if @prescriptions.nil?
   end
 
   # GET /patients/new

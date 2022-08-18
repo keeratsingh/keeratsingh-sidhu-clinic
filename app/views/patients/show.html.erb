@@ -59,7 +59,7 @@
     </thead>
 
     <tbody>
-      <% @prescriptions.sort_by(&:visting_date).reverse.each do |prescription| %>
+      <% @prescriptions.each do |prescription| %>
         <tr class="row">
           <td><%= prescription.name %></td>
           <td><%= prescription.note %></td>
